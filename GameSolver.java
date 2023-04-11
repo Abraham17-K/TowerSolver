@@ -3,13 +3,13 @@ public class GameSolver {
     public int diskNum;
     private int[][] tower;
     public GameSolver(int diskNum) {
-        int[][] tower = new int[diskNum][3];
+        int[][] tower1 = new int[diskNum][3];
         this.diskNum = diskNum;
         for (int i = 0; i < diskNum; i++) {
-            tower[i][0] = i+1;
+            tower1[i][0] = i+1;
         }
         printBoard(tower);
-        this.tower = tower;
+        this.tower = tower1;
     }
 
     public void solve() {
@@ -33,15 +33,21 @@ public class GameSolver {
         }
     }
 
-    public static void movePiece(int num, int row) {
-        for (int i = 0; i < tower.length)
-        for (int i = 0; i < tower.length - 1; i++) {
+    public void movePiece(int num, int row) {
+        for (int i = 0; i < tower.length; i++) {
+            int rowIndex = -1;
+            int verticalIndex = -1;
+            if (indexOf(num, tower[i]) != -1) {
+                rowIndex = i;
+            }
+        }
+        for (int i = 0; i < tower[row].length - 1; i++) {
             if (tower[i][row] != 0) {
-                tower[i][row] = num
+                tower[i][row] = num;
                 break;
             }
             if (i >= tower.length - 1) {
-                throw new Exception("Row " + row + " Full!")
+                throw new Exception("Row " + row + " Full!");
             }
         }
 
@@ -57,7 +63,7 @@ public class GameSolver {
      * <p> Returns only the first index. </p>
      * <p> Returns -1 if it is not found. </p>
      */
-    public int indexOf(<T> value, <T> arr) {
+    public int indexOf(T value, T[] arr) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == value) {
                 return i;
