@@ -1,7 +1,7 @@
 public class GameSolver {
     private boolean allPiecesOn3rdRow;
     public int diskNum;
-    public int[][] tower;
+    private int[][] tower;
     public GameSolver(int diskNum) {
         int[][] tower = new int[diskNum][3];
         this.diskNum = diskNum;
@@ -34,11 +34,35 @@ public class GameSolver {
     }
 
     public static void movePiece(int num, int row) {
-        int unoccupiedIndex;
-        for (int i = 0; i < )
+        for (int i = 0; i < tower.length)
+        for (int i = 0; i < tower.length - 1; i++) {
+            if (tower[i][row] != 0) {
+                tower[i][row] = num
+                break;
+            }
+            if (i >= tower.length - 1) {
+                throw new Exception("Row " + row + " Full!")
+            }
+        }
+
+        
     }
 
     public boolean isEven(int[][] arr){
         return(arr.length % 2 == 0);
+    }
+
+    /**
+     * <p> Finds the index of something in an array. </p>
+     * <p> Returns only the first index. </p>
+     * <p> Returns -1 if it is not found. </p>
+     */
+    public int indexOf(<T> value, <T> arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == value) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
